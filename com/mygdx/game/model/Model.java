@@ -42,14 +42,14 @@ public class Model {
 
         for (byte j = 0; j <= Settings.VERTICAL_MOUNT; j++){
             for (byte i = 0; i <= Settings.HORIZONTAL_MOUNT; i++) {
-                rects[i][j] = createRectByPosition(i, j);
+                //rects[i][j] = createRectByPosition(i, j);
             }
         }
 
     }
     private RectModel createRectByPosition(byte verticalPos, byte horisontalPos){
 
-
+        return null;
     }
 
 }
