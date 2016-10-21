@@ -2,6 +2,7 @@ package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.controller.MainController;
 import com.mygdx.game.model.Model;
@@ -17,11 +18,13 @@ public class GameScreen extends ScreenAdapter {
     MainRenderer renderer;
     MainController controller;
 
+
+
     public GameScreen(MyGdxGame game)
     {
         this.game = game;
         model = new Model(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        renderer = new MainRenderer(model);
+        renderer = new MainRenderer(game.batch,  model);
         controller = new MainController(model);
     }
 

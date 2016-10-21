@@ -10,11 +10,10 @@ public class RectModel {
 
     public final Rectangle bounds;
 
-    public final int color;
+    public int color;
 
-    public RectModel(Rectangle bounds, int color)
+    public RectModel(Rectangle bounds)
     {
         this.bounds = bounds;
-        this.color = color;
     }
 }

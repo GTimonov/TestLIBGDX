@@ -9,7 +9,7 @@ import com.mygdx.game.model.Model;
 import com.mygdx.game.screens.GameScreen;
 
 public class MyGdxGame extends Game {
-	SpriteBatch batch;
+	public SpriteBatch batch;
 	//Texture img;
 	//AudioDevice device;
 
