@@ -31,17 +31,18 @@ public class Model {
     {
         STAGE_WIDTH = width;
         STAGE_HEIGHT = height;
-        generateLevel();
+
     }
     public void updateColors(){
         avaliableColors = ColorsFactory.getColors(Settings.COLORS_AMOUNT);
+
        /* for (Color color:avaliableColors) {
             Gdx.app.log("Current colors", color.toString());
         }*/
 
     }
 
-    private void generateLevel()
+    public void generateLevel()
     {
         rects = new RectModel[Settings.HORIZONTAL_MOUNT][Settings.VERTICAL_MOUNT];
         rectSize = (STAGE_WIDTH - (Settings.MIN_PADDING * 2) - (Settings.GAP * Settings.HORIZONTAL_MOUNT-1)) / Settings.HORIZONTAL_MOUNT;
@@ -55,11 +56,18 @@ public class Model {
             }
         }
         setColorsToRects();
+        randomizeAlpha();
+
         Gdx.app.log("Rects Map", rects.toString());
 
-
-
-
+    }
+    private void randomizeAlpha(){
+        for (RectModel[] ar:rects) {
+            for (RectModel rect : ar) {
+                float alpha = (float)Math.random();
+                rect.color.set(rect.color.r, rect.color.g, rect.color.b, alpha);
+            }
+        }
     }
     private RectModel createRectByPosition(byte x, byte y){
 
@@ -73,13 +81,19 @@ public class Model {
 
     public void setColorsToRects(){
         Random rand = new Random();
-        for (byte j = 0; j < Settings.HORIZONTAL_MOUNT; j++){
-            for (RectModel rect: rects[j]) {
-                rect.color =  avaliableColors[rand.nextInt(avaliableColors.length)];
-                //Color.toFloatBits() argb8888ToColor(rect.color, Integer.getInteger(_avaliableColors.get(rand.nextInt(_avaliableColors.size())).toString()));
+        for (RectModel[] ar:rects) {
+            for (RectModel rect:ar) {
+                rect.color =  new Color(avaliableColors[rand.nextInt(avaliableColors.length)]);
             }
+        }
+    }
 
-
+    public void updateAlpha(){
+        for (RectModel[] ar:rects) {
+            for (RectModel rect : ar) {
+                float alpha = (float)Math.random();
+                rect.color.set(rect.color.r, rect.color.g, rect.color.b, alpha);
+            }
         }
     }
 }

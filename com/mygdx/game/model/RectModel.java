@@ -44,4 +44,7 @@ public class RectModel {
     }
 
     public Color color;
+
+    public boolean alphaIsIncrease = true;
+
 }

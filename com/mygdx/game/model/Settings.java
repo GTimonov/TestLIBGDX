@@ -12,7 +12,7 @@ public class Settings {
     public static final int GAP = 4;
     public static final int MIN_PADDING = 5;
 
-    public static final int PERIOD_TO_CHANGE = 2;
+    public static final int PERIOD_TO_CHANGE = 120;
 
 
 
