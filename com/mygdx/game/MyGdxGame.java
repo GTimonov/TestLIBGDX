@@ -22,7 +22,7 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-
+		//batch.maxSpritesInBatch = 1000;
 
 		setScreen(new GameScreen(this));
 		//img = new Texture("badlogic.jpg");
@@ -48,6 +48,7 @@ public class MyGdxGame extends Game {
 //		sprite.draw(batch);
 //		batch.end();
 		super.render();
+
 	}
 //	private short[] getData() {
 //		final int LENGTH = SAMPLE_RATE*10;

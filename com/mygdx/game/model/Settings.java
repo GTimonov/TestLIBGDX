@@ -5,12 +5,16 @@ package com.mygdx.game.model;
  */
 public class Settings {
 
-    public static final byte COLORS_AMOUNT = 16;
+    public static final byte COLORS_AMOUNT = 4;
 
-    public static short HORIZONTAL_MOUNT = 30;
-    public static short VERTICAL_MOUNT = 50;
+    public static short HORIZONTAL_MOUNT = 15;
+    public static short VERTICAL_MOUNT = 25;
     public static final int GAP = 4;
-    public static final int MIN_PADDING = 3;
+    public static final int MIN_PADDING = 5;
+
+    public static final int PERIOD_TO_CHANGE = 2;
+
+
 
 //    public static final int COLORS_AMOUNT = 16;
 //    public static final int COLORS_AMOUNT = 16;

@@ -1,13 +1,19 @@
 package com.mygdx.game.render;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.mygdx.game.model.Model;
 import com.mygdx.game.model.RectModel;
 import com.mygdx.game.model.Settings;
 
+import java.util.ArrayList;
 
 
 /**
@@ -17,34 +23,40 @@ public class MainRenderer {
 
     private Model model;
     private SpriteBatch batch;
+    private Texture mainTexture;
+    private Pixmap pixmap;
 
     public MainRenderer(SpriteBatch batch, Model model)
     {
         this.model = model;
         this.batch = batch;
+        pixmap = new Pixmap(model.STAGE_WIDTH, model.STAGE_HEIGHT, Pixmap.Format.RGBA8888);
+        mainTexture = new Texture(pixmap);
     }
 
     public void render(){
         drawBricks();
     }
 
+    public void create()
+    {
+
+    }
+
     private void drawBricks(){
 
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
         batch.begin();
-        // Drawing goes here!
 
-
-        for (int i = 0; i < Settings.HORIZONTAL_MOUNT; i++) {
-            for (int j = 0; j < Settings.VERTICAL_MOUNT; j++) {
-                RectModel rect = model.rects[i][j];
-                Pixmap pixmap = new Pixmap(model.rectSize, model.rectSize, Pixmap.Format.RGBA8888);
-                pixmap.setColor(0xddffdd);
-
+        for (RectModel[] ar:model.rects) {
+            for (RectModel rect:ar) {
+                pixmap.setColor(rect.color);
+                pixmap.fillRectangle(rect.getX(), rect.getY(), rect.getWidth(),  rect.getHeight());
 
             }
         }
 
+        mainTexture.draw(pixmap, 0, 0);
+        batch.draw(mainTexture, 0, 0);
         batch.end();
 
     }

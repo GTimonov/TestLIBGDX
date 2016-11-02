@@ -1,8 +1,11 @@
 package com.mygdx.game.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.mygdx.game.model.Settings;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -10,19 +13,27 @@ import java.util.ArrayList;
  */
 public class ColorsFactory {
 
-    private static final int COLORS_MOUNT = 256000;
+    private static final int COLORS_MOUNT = 16777215;
 
-    public static ArrayList getColors(byte amount){
+    public static Color[] getColors(byte amount){
 
-        long randomColor = Math.round(Math.random() * COLORS_MOUNT);
-        long step = COLORS_MOUNT / amount;
+        Random rand = new Random();
 
-        ArrayList values = new ArrayList();
+        //int step = COLORS_MOUNT / amount;
+        //int randomColor = rand.nextInt(step);
+
+        Color[] values = new Color[amount];
         byte i = 0;
         while (i != amount)
         {
-            long color = randomColor + step*i;
-            values.add(color);
+            float r = rand.nextFloat();
+            float g = rand.nextFloat();
+            float b = rand.nextFloat();
+
+
+            //Color color = new Color(randomColor + step*i);
+            Color color = new Color(r, g, b, 1);
+            values[i] = color;
             i++;
         }
 

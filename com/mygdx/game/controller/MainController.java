@@ -1,19 +1,29 @@
 package com.mygdx.game.controller;
 
 import com.mygdx.game.model.Model;
+import com.mygdx.game.model.Settings;
 
 /**
  * Created by Goshan on 20.10.2016.
  */
 public class MainController {
 
-    private Model _model;
+    private Model model;
+
     public MainController(Model model){
-        this._model = model;
+        this.model = model;
     }
 
+    private int i = 0;
     public void update(float delta)
     {
-
+        if (i < Settings.PERIOD_TO_CHANGE) {
+            i++;
+        }
+        else {
+            i = 0;
+            model.updateColors();
+            model.setColorsToRects();
+        }
     }
 }

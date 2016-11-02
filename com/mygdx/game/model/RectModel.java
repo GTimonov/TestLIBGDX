@@ -1,5 +1,8 @@
 package com.mygdx.game.model;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -8,12 +11,37 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class RectModel {
 
-    public final Rectangle bounds;
-
-    public int color;
+    private final Rectangle bounds;
+    private int width;
+    private int height;
+    private int x;
+    private int y;
 
     public RectModel(Rectangle bounds)
     {
         this.bounds = bounds;
+        width = (int) bounds.width;
+        height = (int) bounds.height;
+        x = (int) bounds.x;
+        y = (int) bounds.y;
+
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Color color;
 }
