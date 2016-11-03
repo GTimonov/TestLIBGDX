@@ -19,17 +19,16 @@ public class MainController {
     private int i = 0;
     public void update(float delta)
     {
-
-        //model.updateAlpha(model.rectAlpha);
         model.updateAlpha();
-        if (i < Settings.PERIOD_TO_CHANGE) {
-            i++;
-        }
-        else {
-            i = 0;
-            //model.updateColors();
-            model.setColorsToRects();
 
-        }
+//        if (i < Settings.PERIOD_TO_CHANGE) {
+//            i++;
+//        }
+//        else {
+//            i = 0;
+//            //model.updateColors();
+//            model.setColorsToRects();
+//
+//        }
     }
 }

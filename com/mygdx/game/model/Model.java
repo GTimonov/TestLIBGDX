@@ -25,12 +25,14 @@ public class Model {
     public RectModel[][] rects;
     public int rectSize;
     private Color[] avaliableColors;
-    public float rectAlpha = 1;
+    private Random rand;
+
 
     public Model(int width, int height)
     {
         STAGE_WIDTH = width;
         STAGE_HEIGHT = height;
+        rand = new Random();
 
     }
     public void updateColors(){
@@ -58,7 +60,7 @@ public class Model {
         setColorsToRects();
         randomizeAlpha();
 
-        Gdx.app.log("Rects Map", rects.toString());
+        //Gdx.app.log("Rects Map", rects.toString());
 
     }
     private void randomizeAlpha(){
@@ -66,6 +68,7 @@ public class Model {
             for (RectModel rect : ar) {
                 float alpha = (float)Math.random();
                 rect.color.set(rect.color.r, rect.color.g, rect.color.b, alpha);
+                rect.alphaIsIncrease = Math.random() > .5;
             }
         }
     }
@@ -80,7 +83,6 @@ public class Model {
     }
 
     public void setColorsToRects(){
-        Random rand = new Random();
         for (RectModel[] ar:rects) {
             for (RectModel rect:ar) {
                 rect.color =  new Color(avaliableColors[rand.nextInt(avaliableColors.length)]);
@@ -91,8 +93,13 @@ public class Model {
     public void updateAlpha(){
         for (RectModel[] ar:rects) {
             for (RectModel rect : ar) {
-                float alpha = (float)Math.random();
-                rect.color.set(rect.color.r, rect.color.g, rect.color.b, alpha);
+                float alpha =  rect.color.a;
+
+                if (alpha <=0) {
+                    rect.color.a = 1;
+                    rect.color =  new Color(avaliableColors[rand.nextInt(avaliableColors.length)]);
+                }
+                rect.color.a-=Settings.ALPHA_STEP;
             }
         }
     }
