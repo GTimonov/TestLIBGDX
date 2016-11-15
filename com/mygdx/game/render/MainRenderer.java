@@ -44,10 +44,7 @@ public class MainRenderer {
     private void drawBricks(){
 
         batch.begin();
-
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(1, 1, 1, 1);
-        shapeRenderer.rect(0, 0, model.STAGE_WIDTH, model.STAGE_HEIGHT);
 
         for (RectModel[] ar:model.rects)
             for (RectModel rect : ar) {
